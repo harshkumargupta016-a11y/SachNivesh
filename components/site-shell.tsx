@@ -30,14 +30,22 @@ export default function SiteShell({ children }: { children: ReactNode }) {
 
   useEffect(() => {
     const saved = localStorage.getItem("sn_lang");
-    if (saved) setCurrentLang(saved);
+    if (saved) {
+      setCurrentLang(saved);
+      if (typeof (window as unknown as { setLang?: (l: string) => void }).setLang === "function") {
+        (window as unknown as { setLang: (l: string) => void }).setLang(saved);
+      }
+    }
   }, []);
 
   const handleLanguageChange = (code: string) => {
     setCurrentLang(code);
     localStorage.setItem("sn_lang", code);
     setShowLangModal(false);
-    // Dispatch custom event for language changes if needed
+    // Sync with index.html setLang if present on page
+    if (typeof (window as unknown as { setLang?: (l: string) => void }).setLang === "function") {
+      (window as unknown as { setLang: (l: string) => void }).setLang(code);
+    }
     window.dispatchEvent(new CustomEvent("sn-language-change", { detail: { lang: code } }));
   };
 
