@@ -1,29 +1,31 @@
-import { describe, it, expect } from "vitest";
+import test from "node:test";
+import assert from "node:assert/strict";
 
-describe("Header Navigation & Help Centre Regression Tests", () => {
-  it("verifies language switcher options and code map", () => {
-    const languages = [
-      { code: "en", label: "English" },
-      { code: "hi", label: "हिन्दी (Hindi)" },
-      { code: "hing", label: "Hinglish" },
-      { code: "mr", label: "मराठी (Marathi)" },
-      { code: "gu", label: "ગુજરાતી (Gujarati)" },
-      { code: "ta", label: "தமிழ் (Tamil)" },
-    ];
+test("Header Navigation & Help Centre Regression Tests - Language Switcher Options", () => {
+  const languages = [
+    { code: "en", label: "English" },
+    { code: "hi", label: "हिन्दी (Hindi)" },
+    { code: "hing", label: "Hinglish" },
+    { code: "mr", label: "मराठी (Marathi)" },
+    { code: "gu", label: "ગુજરાતી (Gujarati)" },
+    { code: "ta", label: "தமிழ் (Tamil)" },
+  ];
 
-    expect(languages.length).toBe(6);
-    expect(languages[0].code).toBe("en");
-  });
+  assert.equal(languages.length, 6);
+  assert.equal(languages[0].code, "en");
+  assert.equal(languages[1].code, "hi");
+});
 
-  it("verifies Help Centre FAQ and complaint portal structures", () => {
-    const complaintPortals = [
-      "National Cyber Crime Reporting Portal",
-      "SEBI SCORES Portal",
-      "RBI Sachet Portal",
-      "IRDAI Bima Bharosa Portal"
-    ];
+test("Header Navigation & Help Centre Regression Tests - Complaint Portals", () => {
+  const complaintPortals = [
+    "National Cyber Crime Reporting Portal",
+    "SEBI SCORES Portal",
+    "RBI Sachet Portal",
+    "IRDAI Bima Bharosa Portal"
+  ];
 
-    expect(complaintPortals).toContain("National Cyber Crime Reporting Portal");
-    expect(complaintPortals).toContain("SEBI SCORES Portal");
-  });
+  assert.ok(complaintPortals.includes("National Cyber Crime Reporting Portal"));
+  assert.ok(complaintPortals.includes("SEBI SCORES Portal"));
+  assert.ok(complaintPortals.includes("RBI Sachet Portal"));
+  assert.ok(complaintPortals.includes("IRDAI Bima Bharosa Portal"));
 });
