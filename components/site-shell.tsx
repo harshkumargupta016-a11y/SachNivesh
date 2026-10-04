@@ -1,6 +1,8 @@
+"use client";
+
 import Link from "next/link";
-import type { ReactNode } from "react";
-import { ShieldCheck, AlertTriangle, Menu } from "lucide-react";
+import { useState, useEffect, type ReactNode } from "react";
+import { ShieldCheck, AlertTriangle, Menu, Globe, HelpCircle, X } from "lucide-react";
 import Chatbot from "@/components/chatbot";
 
 const navItems = [
@@ -8,10 +10,37 @@ const navItems = [
   { href: "/learn", label: "Learn" },
   { href: "/verify", label: "Safety Guide" },
   { href: "/report", label: "Reports" },
+  { href: "/help", label: "Help Centre" },
   { href: "/about", label: "About" },
 ];
 
+const languages = [
+  { code: "en", label: "English" },
+  { code: "hi", label: "हिन्दी (Hindi)" },
+  { code: "hing", label: "Hinglish" },
+  { code: "mr", label: "मराठी (Marathi)" },
+  { code: "gu", label: "ગુજરાતી (Gujarati)" },
+  { code: "ta", label: "தமிழ் (Tamil)" },
+];
+
 export default function SiteShell({ children }: { children: ReactNode }) {
+  const [currentLang, setCurrentLang] = useState("en");
+  const [showLangModal, setShowLangModal] = useState(false);
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+
+  useEffect(() => {
+    const saved = localStorage.getItem("sn_lang");
+    if (saved) setCurrentLang(saved);
+  }, []);
+
+  const handleLanguageChange = (code: string) => {
+    setCurrentLang(code);
+    localStorage.setItem("sn_lang", code);
+    setShowLangModal(false);
+    // Dispatch custom event for language changes if needed
+    window.dispatchEvent(new CustomEvent("sn-language-change", { detail: { lang: code } }));
+  };
+
   return (
     <div className="min-h-screen bg-slate-50 text-slate-900">
       <header className="sticky top-0 z-40 border-b border-slate-200/80 bg-white/80 backdrop-blur-lg">
@@ -38,29 +67,116 @@ export default function SiteShell({ children }: { children: ReactNode }) {
             ))}
           </nav>
 
-          <div className="flex items-center gap-3">
+          <div className="flex items-center gap-2 sm:gap-3">
+            {/* Language Switcher Trigger */}
             <button
               type="button"
-              className="hidden rounded-full border border-slate-200 bg-white px-3 py-2 text-sm font-medium text-slate-700 md:inline-flex"
+              id="langBtn"
+              onClick={() => setShowLangModal(true)}
+              className="inline-flex items-center gap-1.5 rounded-full border border-slate-200 bg-white px-3 py-2 text-xs font-semibold text-slate-700 shadow-sm transition hover:border-slate-300 hover:bg-slate-50"
             >
-              English
+              <Globe className="h-3.5 w-3.5 text-blue-600" />
+              <span>{languages.find((l) => l.code === currentLang)?.label || "English"}</span>
             </button>
-            <button
-              type="button"
-              className="hidden rounded-full border border-slate-200 bg-white px-3 py-2 text-sm font-medium text-slate-700 md:inline-flex"
+
+            {/* Help Centre Link */}
+            <Link
+              href="/help"
+              id="helpBtn"
+              className="hidden sm:inline-flex items-center gap-1.5 rounded-full border border-slate-200 bg-white px-3 py-2 text-xs font-semibold text-slate-700 shadow-sm transition hover:border-slate-300 hover:bg-slate-50"
             >
-              Help
-            </button>
+              <HelpCircle className="h-3.5 w-3.5 text-slate-500" />
+              Help Centre
+            </Link>
+
+            {/* Mobile Menu Trigger */}
             <button
               type="button"
-              className="flex h-10 w-10 items-center justify-center rounded-full border border-slate-200 bg-white text-slate-700 md:hidden"
+              onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+              className="flex h-9 w-9 items-center justify-center rounded-full border border-slate-200 bg-white text-slate-700 md:hidden"
               aria-label="Toggle navigation menu"
             >
-              <Menu className="h-5 w-5" />
+              {mobileMenuOpen ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
             </button>
           </div>
         </div>
+
+        {/* Mobile Nav Overlay */}
+        {mobileMenuOpen && (
+          <div className="border-b border-slate-200 bg-white px-4 py-4 md:hidden space-y-3">
+            <nav className="flex flex-col space-y-2">
+              {navItems.map((item) => (
+                <Link
+                  key={item.href}
+                  href={item.href}
+                  onClick={() => setMobileMenuOpen(false)}
+                  className="rounded-lg px-3 py-2 text-sm font-medium text-slate-700 hover:bg-slate-50"
+                >
+                  {item.label}
+                </Link>
+              ))}
+            </nav>
+            <div className="pt-2 border-t border-slate-100 flex items-center justify-between">
+              <button
+                type="button"
+                onClick={() => {
+                  setMobileMenuOpen(false);
+                  setShowLangModal(true);
+                }}
+                className="inline-flex items-center gap-1.5 text-xs font-semibold text-blue-700"
+              >
+                <Globe className="h-4 w-4" /> Change Language
+              </button>
+              <Link
+                href="/help"
+                onClick={() => setMobileMenuOpen(false)}
+                className="inline-flex items-center gap-1.5 text-xs font-semibold text-slate-700"
+              >
+                <HelpCircle className="h-4 w-4" /> Help Centre
+              </Link>
+            </div>
+          </div>
+        )}
       </header>
+
+      {/* Language Change Modal */}
+      {showLangModal && (
+        <div className="fixed inset-0 z-50 flex items-center justify-center bg-slate-900/50 p-4 backdrop-blur-sm">
+          <div className="w-full max-w-sm rounded-3xl border border-slate-200 bg-white p-6 shadow-xl">
+            <div className="flex items-center justify-between border-b border-slate-100 pb-3">
+              <div className="flex items-center gap-2 font-bold text-slate-900">
+                <Globe className="h-5 w-5 text-blue-600" />
+                Select Display Language
+              </div>
+              <button
+                type="button"
+                onClick={() => setShowLangModal(false)}
+                className="rounded-full p-1 text-slate-400 hover:bg-slate-100 hover:text-slate-600"
+              >
+                <X className="h-5 w-5" />
+              </button>
+            </div>
+
+            <div className="mt-4 grid gap-2">
+              {languages.map((lang) => (
+                <button
+                  key={lang.code}
+                  type="button"
+                  onClick={() => handleLanguageChange(lang.code)}
+                  className={`flex items-center justify-between rounded-xl px-4 py-3 text-sm font-semibold transition ${
+                    currentLang === lang.code
+                      ? "bg-blue-600 text-white"
+                      : "bg-slate-50 text-slate-800 hover:bg-slate-100"
+                  }`}
+                >
+                  <span>{lang.label}</span>
+                  {currentLang === lang.code && <ShieldCheck className="h-4 w-4" />}
+                </button>
+              ))}
+            </div>
+          </div>
+        </div>
+      )}
 
       <main>{children}</main>
 
@@ -92,12 +208,12 @@ export default function SiteShell({ children }: { children: ReactNode }) {
           </div>
 
           <div>
-            <h3 className="text-sm font-semibold uppercase tracking-[0.18em] text-slate-500">Company</h3>
+            <h3 className="text-sm font-semibold uppercase tracking-[0.18em] text-slate-500">Support &amp; Help</h3>
             <ul className="mt-3 space-y-2 text-sm text-slate-600">
+              <li><Link href="/help">Help Centre</Link></li>
               <li><Link href="/about">About</Link></li>
               <li><Link href="/privacy">Privacy</Link></li>
               <li><Link href="/terms">Terms</Link></li>
-              <li><Link href="/accessibility">Accessibility</Link></li>
             </ul>
           </div>
 
