@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>SachNivesh – Investor protection &amp; misinformation literacy</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<script src="https://unpkg.com/lucide@latest"></script>
+<style>
+:root{--ink:#0F172A;--sub:#334155;--bg:#F8FAFC;--pri:#2563EB;--navy:#1E40AF;--ok:#059669;--warn:#D97706;--bad:#E11D48}
+html{scroll-behavior:smooth;scroll-padding-top:76px}
+body{font-family:Inter,system-ui,-apple-system,"Segoe UI",sans-serif;color:var(--ink);background:#fff}
+.card{background:#fff;border:1px solid #E2E8F0;border-radius:14px;box-shadow:0 1px 3px rgba(15,23,42,.06)}
+.btn{display:inline-flex;align-items:center;gap:.4rem;font-weight:600;border-radius:10px;padding:.55rem 1rem;transition:background .15s}
+.btn-p{background:var(--pri);color:#fff}.btn-p:hover{background:var(--navy)}
+.btn-o{border:1px solid #CBD5E1;color:var(--sub);background:#fff}.btn-o:hover{background:#F1F5F9}
+.tab[aria-selected=true]{background:var(--navy);color:#fff}
+.tab{padding:.5rem .9rem;border-radius:9px;font-weight:600;color:var(--sub);font-size:.9rem}
+textarea,input[type=text],input[type=password]{width:100%;border:1px solid #CBD5E1;border-radius:10px;padding:.65rem .8rem;background:#fff}
+textarea:focus,input:focus,button:focus-visible,a:focus-visible,summary:focus-visible{outline:3px solid #93C5FD;outline-offset:2px}
+.node{cursor:pointer;transition:border-color .15s,background .15s}
+.node[aria-pressed=true]{border-color:var(--pri);background:#EFF6FF}
+.chip{display:inline-flex;gap:.3rem;align-items:center;border-radius:999px;padding:.15rem .6rem;font-size:.78rem;font-weight:600}
+.r-h{background:#FFE4E6;color:#9F1239}.r-m{background:#FEF3C7;color:#92400E}.r-l{background:#D1FAE5;color:#065F46}
+.dots span{display:inline-block;width:6px;height:6px;border-radius:50%;background:#94A3B8;animation:b 1s infinite}.dots span:nth-child(2){animation-delay:.15s}.dots span:nth-child(3){animation-delay:.3s}
+@keyframes b{50%{transform:translateY(-4px)}}
+@media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important;scroll-behavior:auto!important}}
+</style>
+</head>
+<body class="bg-white">
+
+<header class="sticky top-0 z-40 bg-white/95 backdrop-blur border-b border-slate-200">
+ <div class="max-w-6xl mx-auto px-4 h-16 flex items-center gap-4">
+  <a href="#top" class="flex items-center gap-2 font-extrabold text-lg text-[#1E40AF]"><i data-lucide="shield-check" class="w-6 h-6 text-emerald-600"></i>SachNivesh<span class="chip r-l hidden sm:inline-flex">Verified-first</span></a>
+  <nav class="hidden lg:flex gap-5 ml-6 text-sm font-medium text-slate-700" aria-label="Main">
+   <a href="#top" data-i="n1">Overview</a><a href="#studio" data-i="n2">Interactive Simulator</a><a href="#flow" data-i="n3">Architecture &amp; Flow</a><a href="#game" data-i="n4">Spot-the-Scam</a><a href="#portals" data-i="n5">Official Portals</a>
+  </nav>
+  <div class="ml-auto flex items-center gap-2">
+   <div class="flex rounded-full border border-slate-300 p-0.5 text-sm" role="group" aria-label="Language">
+    <button id="lEn" class="px-3 py-1 rounded-full bg-[#1E40AF] text-white font-semibold" onclick="setLang('en')">English</button>
+    <button id="lHi" class="px-3 py-1 rounded-full font-semibold text-slate-700" onclick="setLang('hi')">हिन्दी</button>
+   </div>
+   <a href="tel:1930" class="btn bg-rose-600 text-white hover:bg-rose-700"><i data-lucide="phone-call" class="w-4 h-4"></i>Emergency 1930</a>
+  </div>
+ </div>
+</header>
+
+<main id="top">
+<section class="bg-[#F8FAFC] border-b border-slate-200">
+ <div class="max-w-6xl mx-auto px-4 py-14 grid lg:grid-cols-2 gap-10 items-center">
+  <div>
+   <h1 class="text-3xl md:text-4xl font-extrabold leading-tight" data-i="h1">Empowering Bharat's Retail Investors Against Financial Fraud &amp; Unregistered Misinformation</h1>
+   <p class="mt-4 text-slate-700 max-w-prose">Paste a message, upload a screenshot, check a UPI ID or ask by voice. SachNivesh shows which warning signs match known fraud patterns, what it cannot verify, and where to confirm.</p>
+   <div class="mt-6 flex flex-wrap gap-3"><a href="#studio" class="btn btn-p"><i data-lucide="scan-search" class="w-4 h-4"></i><span data-i="cta">Check a message</span></a><a href="#game" class="btn btn-o"><i data-lucide="gamepad-2" class="w-4 h-4"></i>Play Spot-the-Scam</a></div>
+  </div>
+  <div class="grid grid-cols-3 gap-3">
+   <div class="card p-4"><div class="text-2xl font-extrabold text-rose-600">1 Lakh+</div><p class="text-xs text-slate-600 mt-1">misleading market posts reported by SEBI to major platforms</p></div>
+   <div class="card p-4"><div class="text-2xl font-extrabold text-rose-600">₹546 Cr</div><p class="text-xs text-slate-600 mt-1">unregistered advisory impounded by SEBI (Sathe case)</p></div>
+   <div class="card p-4"><div class="text-2xl font-extrabold text-rose-600">₹3.04 Cr</div><p class="text-xs text-slate-600 mt-1">lost by one Jabalpur doctor to a “5% daily returns” scheme</p></div>
+   <p class="col-span-3 text-xs text-slate-500">Sources: Cafemutual, Zerodha Daily Brief, The Hitavada (see deck).</p>
+  </div>
+ </div>
+</section>
+
+<section id="studio" class="max-w-6xl mx-auto px-4 py-14">
+ <h2 class="text-2xl font-bold">Pause &amp; Verify studio</h2>
+ <p class="text-slate-600 mt-1">Rules run in your browser. Only masked text can ever leave your device.</p>
+ <div class="grid lg:grid-cols-2 gap-6 mt-6">
+  <div class="card p-5">
+   <div class="flex flex-wrap gap-1 mb-4" role="tablist">
+    <button class="tab" role="tab" aria-selected="true" data-t="text">Text / WhatsApp</button>
+    <button class="tab" role="tab" aria-selected="false" data-t="ocr">Screenshot (OCR sim)</button>
+    <button class="tab" role="tab" aria-selected="false" data-t="upi">UPI ID / QR</button>
+    <button class="tab" role="tab" aria-selected="false" data-t="voice">Voice query</button>
+   </div>
+   <div id="p-text" class="pane"><label class="text-sm font-semibold" for="msg">Message to check</label><textarea id="msg" rows="6" placeholder="Paste a WhatsApp / Telegram / SMS message here"></textarea></div>
+   <div id="p-ocr" class="pane hidden"><label class="text-sm font-semibold" for="img">Upload a screenshot</label><input id="img" type="file" accept="image/*" class="block w-full text-sm mt-2"><p class="text-xs text-slate-500 mt-2">Prototype: OCR is simulated and fills the box below with sample text. Production would use Tesseract or Bhashini OCR.</p><textarea id="ocrOut" rows="4" class="mt-3" placeholder="Extracted text appears here"></textarea></div>
+   <div id="p-upi" class="pane hidden"><label class="text-sm font-semibold" for="upi">UPI ID the sender asked you to pay</label><input id="upi" type="text" placeholder="e.g. rahul.trade@okaxis"><label class="text-sm font-semibold block mt-3" for="claim">What do they claim to be?</label><input id="claim" type="text" placeholder="e.g. SEBI registered broker"><p class="text-xs text-slate-500 mt-2">Registered intermediaries use IDs ending in <b>@valid</b>. Always confirm on SEBI Check.</p></div>
+   <div id="p-voice" class="pane hidden"><button id="mic" class="btn btn-o"><i data-lucide="mic" class="w-4 h-4"></i><span id="micT">Tap and speak</span></button><textarea id="vOut" rows="4" class="mt-3" placeholder="Your words appear here"></textarea><p class="text-xs text-slate-500 mt-2">Uses your browser's speech recognition when available; otherwise a sample sentence is used.</p></div>
+   <div class="mt-4"><p class="text-xs font-semibold text-slate-500 mb-2">Try a sample</p><div class="flex flex-wrap gap-2">
+    <button class="btn btn-o text-sm" data-p="0">Telegram “5% daily”</button><button class="btn btn-o text-sm" data-p="1">“Registered” tipster fee</button><button class="btn btn-o text-sm" data-p="2">Official SEBI circular</button></div></div>
+   <div class="mt-5 flex items-center gap-3"><button id="go" class="btn btn-p"><i data-lucide="sparkles" class="w-4 h-4"></i><span data-i="an">Analyze with Gemini</span></button><button class="btn btn-o text-sm" onclick="openKey()"><i data-lucide="key-round" class="w-4 h-4"></i>API key</button><span id="mode" class="text-xs text-slate-500"></span></div>
+  </div>
+  <div id="res" class="card p-5" aria-live="polite"><div class="text-slate-500 text-sm h-full flex items-center justify-center py-16">Your risk read-out will appear here. Pick a sample to start.</div></div>
+ </div>
+</section>
+
+<section id="flow" class="bg-[#F8FAFC] border-y border-slate-200">
+ <div class="max-w-6xl mx-auto px-4 py-14">
+  <h2 class="text-2xl font-bold">How a check works</h2><p class="text-slate-600 mt-1">Select a step to see what happens in it.</p>
+  <div class="mt-6 flex flex-col lg:flex-row items-stretch gap-2" id="nodes"></div>
+  <div id="drawer" class="card p-5 mt-4 text-slate-700" aria-live="polite">Select a step above.</div>
+ </div>
+</section>
+
+<section id="game" class="max-w-6xl mx-auto px-4 py-14">
+ <div class="flex items-end justify-between flex-wrap gap-3"><div><h2 class="text-2xl font-bold">Spot-the-Scam: 60-second challenge</h2><p class="text-slate-600 mt-1">Choose the biggest red flag in each message.</p></div><div class="flex gap-3 items-center"><span class="chip r-m" id="tm">60s</span><span class="chip r-l" id="sc">Score 0/3</span><button id="gs" class="btn btn-p">Start</button></div></div>
+ <div id="gb" class="grid md:grid-cols-3 gap-4 mt-6"></div>
+</section>
+
+<section id="portals" class="bg-[#0F172A] text-white">
+ <div class="max-w-6xl mx-auto px-4 py-12">
+  <h2 class="text-2xl font-bold">If money has moved or you are unsure</h2>
+  <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-4 mt-6 text-slate-900">
+   <div class="card p-4"><b>National Cybercrime Helpline</b><p class="text-sm text-slate-600 mt-1">Call within the first hours to help freeze the trail.</p><div class="mt-3 flex gap-2 flex-wrap"><a class="btn btn-p text-sm" href="tel:1930">Call 1930</a><a class="btn btn-o text-sm" target="_blank" rel="noopener" href="https://cybercrime.gov.in">cybercrime.gov.in</a></div></div>
+   <div class="card p-4"><b>SEBI Check</b><p class="text-sm text-slate-600 mt-1">Verify intermediary bank accounts and @valid UPI IDs.</p><a class="btn btn-p text-sm mt-3" target="_blank" rel="noopener" href="https://siportal.sebi.gov.in/intermediary/sebi-check">Open SEBI Check</a></div>
+   <div class="card p-4"><b>SEBI SCORES</b><p class="text-sm text-slate-600 mt-1">Complaints against brokers, mutual funds and registered entities.</p><a class="btn btn-p text-sm mt-3" target="_blank" rel="noopener" href="https://scores.sebi.gov.in">Open SCORES</a></div>
+   <div class="card p-4"><b>RBI Sachet</b><p class="text-sm text-slate-600 mt-1">Find the right regulator and report unauthorised deposit-taking.</p><a class="btn btn-p text-sm mt-3" target="_blank" rel="noopener" href="https://sachet.rbi.org.in">Open Sachet</a></div>
+   <div class="card p-4"><b>SEBI intermediary directory</b><p class="text-sm text-slate-600 mt-1">Check registration before you invest or pay.</p><a class="btn btn-p text-sm mt-3" target="_blank" rel="noopener" href="https://www.sebi.gov.in/intermediaries.html">Open directory</a></div>
+  </div>
+  <p class="text-sm text-slate-300 mt-8 max-w-3xl">Built on DPDP Act principles: zero persistence by default and client-side PII masking. For educational risk assessment only; not SEBI-registered advice. SachNivesh never recommends stocks, predicts prices or gives trading tips.</p>
+ </div>
+</section>
+</main>
+
+<!-- Assistant -->
+<button id="fab" class="fixed bottom-5 right-5 z-50 btn btn-p rounded-full shadow-lg" aria-label="Open assistant"><i data-lucide="message-circle" class="w-5 h-5"></i>Ask Safety Auditor</button>
+<div id="chat" class="hidden fixed bottom-20 right-5 z-50 w-[calc(100vw-2.5rem)] sm:w-96 card flex-col overflow-hidden" style="height:480px;display:none">
+ <div class="px-4 py-3 bg-[#1E40AF] text-white flex items-center justify-between"><b class="text-sm">Investor Safety Auditor</b><div class="flex gap-2"><button onclick="openKey()" aria-label="API key"><i data-lucide="key-round" class="w-4 h-4"></i></button><button onclick="tc()" aria-label="Close"><i data-lucide="x" class="w-4 h-4"></i></button></div></div>
+ <div id="log" class="flex-1 overflow-y-auto p-3 space-y-2 text-sm bg-[#F8FAFC]"></div>
+ <form id="cf" class="p-3 border-t border-slate-200 flex gap-2"><input id="ci" type="text" placeholder="Ask about a scam or a rule" aria-label="Your question"><button class="btn btn-p" aria-label="Send"><i data-lucide="send" class="w-4 h-4"></i></button></form>
+</div>
+
+<!-- Key modal -->
+<div id="km" class="hidden fixed inset-0 z-[60] bg-slate-900/50 items-center justify-center p-4" role="dialog" aria-modal="true" aria-label="Gemini API key">
+ <div class="card p-5 w-full max-w-md"><h3 class="font-bold">Gemini API key (optional)</h3><p class="text-sm text-slate-600 mt-1">Stored only in this browser's localStorage and sent only to Google. Only masked text is sent. Without a key, a built-in simulator answers.</p><input id="ki" type="password" class="mt-3" placeholder="Paste key" autocomplete="off"><div class="mt-4 flex gap-2 justify-end"><button class="btn btn-o" onclick="clrKey()">Remove key</button><button class="btn btn-p" onclick="saveKey()">Save</button></div></div>
+</div>
+
+<script>
+const $=s=>document.querySelector(s),$$=s=>[...document.querySelectorAll(s)];
+const esc=t=>String(t).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+const ic=()=>{try{window.lucide&&lucide.createIcons()}catch(e){}};
+let lang='en';
+const HI={n1:'अवलोकन',n2:'इंटरैक्टिव सिमुलेटर',n3:'आर्किटेक्चर और प्रवाह',n4:'स्कैम पहचानें',n5:'आधिकारिक पोर्टल',h1:'भारत के खुदरा निवेशकों को वित्तीय धोखाधड़ी और अपंजीकृत भ्रामक जानकारी से सशक्त बनाना',cta:'संदेश जाँचें',an:'Gemini से जाँचें'};
+const EN={};$$('[data-i]').forEach(e=>EN[e.dataset.i]=e.textContent);
+function setLang(l){lang=l;$$('[data-i]').forEach(e=>e.textContent=(l=='hi'?HI:EN)[e.dataset.i]);document.documentElement.lang=l;
+ $('#lEn').className='px-3 py-1 rounded-full font-semibold '+(l=='en'?'bg-[#1E40AF] text-white':'text-slate-700');
+ $('#lHi').className='px-3 py-1 rounded-full font-semibold '+(l=='hi'?'bg-[#1E40AF] text-white':'text-slate-700');if(last)render(last);}
+
+// ---- key handling
+const getKey=()=>localStorage.getItem('sn_gkey')||'';
+function openKey(){$('#ki').value=getKey();$('#km').style.display='flex';$('#km').classList.remove('hidden')}
+function closeKey(){$('#km').style.display='none';mode()}
+function saveKey(){localStorage.setItem('sn_gkey',$('#ki').value.trim());closeKey()}
+function clrKey(){localStorage.removeItem('sn_gkey');closeKey()}
+$('#km').addEventListener('click',e=>{if(e.target.id=='km')closeKey()});
+function mode(){$('#mode').textContent=getKey()?'Live Gemini (masked text only)':'Simulated Gemini (no key)'}
+mode();
+
+// ---- PII masking
+function mask(t){const a={upi:0,phone:0,acct:0,name:0};let o=t;
+ o=o.replace(/\b[\w.\-]{2,}@[a-zA-Z]{2,}\b/g,()=>{a.upi++;return'[UPI_ID]'});
+ o=o.replace(/(?:\+91[\s-]?)?\b[6-9]\d{9}\b/g,()=>{a.phone++;return'[PHONE]'});
+ o=o.replace(/\b\d{9,18}\b/g,()=>{a.acct++;return'[ACCOUNT]'});
+ o=o.replace(/\b(Mr|Mrs|Ms|Shri|Sh|Smt|Dr)\.?\s+[A-Z][a-z]+(?:\s+[A-Z][a-z]+)?/g,()=>{a.name++;return'[NAME]'});
+ return{text:o,audit:a}}
+
+// ---- rules engine (runs on original text, locally)
+const RULES=[
+ [/(\d+\s*%\s*(daily|per day)|daily returns?|roz(ana)?\s+(kamao|return))/i,40,'Unrealistic daily returns','Genuine investments cannot promise fixed daily returns.'],
+ [/(guaranteed|assured|fixed)\s+(profit|returns?)|100%\s+(profit|safe)|risk[- ]?free/i,35,'Guaranteed profit claim','No SEBI-registered adviser may guarantee returns.'],
+ [/sure[\s-]?shot|jackpot|multibagger|double (your )?money/i,25,'Hype language','“Sure-shot” style claims are a classic pump-and-dump cue.'],
+ [/vip\s*(group|channel)|premium\s*(group|channel)|join (my|our) (telegram|whatsapp)/i,30,'Private tip group (VIP)','Stock tips in closed groups are a common manipulation channel.'],
+ [/telegram|whatsapp group/i,10,'Messaging-app group','Advice delivered in unmoderated chats cannot be verified.'],
+ [/\.apk\b|install (this )?app|download (the )?app/i,30,'APK / unknown app install','Apps outside official stores can steal data and money.'],
+ [/(hurry|limited seats?|today only|last chance|only \d+ (slots|seats)|urgent|abhi|jaldi)/i,20,'Urgency pressure','Artificial urgency is meant to stop you from verifying.'],
+ [/(registration fee|joining fee|pay .*fee|fee to|advance)/i,15,'Upfront fee request','Be careful with fees paid before any verified service.']];
+const PERSONAL=/@(okaxis|ybl|oksbi|okhdfcbank|okicici|paytm|ibl|axl|apl|upi)\b/i;
+const OFFICIAL=/(sebi\.gov\.in|investor\.sebi\.gov\.in|rbi\.org\.in|nseindia\.com|bseindia\.com|nism\.ac\.in)/i;
+function rules(t,claim){let s=0,f=[],ok=[];
+ RULES.forEach(r=>{if(r[0].test(t)){s+=r[1];f.push({name:r[2],why:r[3]})}});
+ const u=t.match(/\b[\w.\-]{2,}@[a-zA-Z]{2,}\b/g)||[];
+ const reg=/sebi\s*regist|registered (broker|adviser|advisor|analyst)|ra\/ia|inh\d{6,}|inz\d{6,}/i.test(t+' '+(claim||''));
+ u.forEach(x=>{if(!/@valid$/i.test(x)){if(reg||PERSONAL.test(x)){s+=reg?30:15;f.push({name:'Unverified UPI ID',why:'This ID does not end in @valid'+(reg?', yet the sender claims to be registered.':'; it looks like a personal handle.')})}}});
+ if(/personal|phone number|number pe|gpay|phonepe/i.test(t)&&reg){s+=10}
+ if(reg&&!f.length)f.push({name:'Unproven “SEBI registered” claim',why:'Anyone can say this. Check the registration number in the SEBI directory.'});
+ if(OFFICIAL.test(t)&&s<20){ok.push('Link points to an official regulator domain');s=Math.max(0,s-10)}
+ s=Math.min(100,s);const lvl=s>=55?'High':s>=25?'Medium':'Low';
+ return{score:s,lvl,flags:f,ok}}
+
+// ---- Gemini
+const SYS="You are the SachNivesh Investor Safety Auditor. You evaluate potential financial misinformation, fraud patterns, and scam claims in India. Strict guardrail: Never recommend stocks, never predict prices, and never give trading tips. Always output structured analysis: 1) Risk Level (Low/Medium/High), 2) Detected Red Flags, 3) Plain-Language vernacular explanation, 4) Calibrated Uncertainty (what can/cannot be verified), 5) Recommended Official Actions (SEBI Check, 1930, SCORES). Respond ONLY as JSON: {\"risk\":\"Low|Medium|High\",\"flags\":[string],\"explanation\":string,\"matches\":[string],\"cannot_verify\":[string],\"actions\":[string]}. Write the explanation in "; 
+async function gem(body){const k=getKey();const r=await fetch('https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent?key='+encodeURIComponent(k),{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(body)});
+ if(!r.ok)throw new Error('Gemini API '+r.status);const j=await r.json();return j.candidates?.[0]?.content?.parts?.map(p=>p.text).join('')||''}
+function mockRes(R,m){const hi=lang=='hi';const lv=R.lvl;
+ const en=lv=='High'?'This message matches several well-known fraud patterns: '+R.flags.map(f=>f.name.toLowerCase()).join(', ')+'. Do not pay or install anything. Verify the sender on SEBI Check first.':lv=='Medium'?'Some signals here deserve a pause. Confirm who is asking and why before you act.':'No strong fraud pattern found in this text, and it points to an official source. Still, open the official site yourself instead of trusting forwarded links.';
+ const h=lv=='High'?'इस संदेश में कई जाने-पहचाने धोखाधड़ी के संकेत हैं: पैसे न भेजें और कोई ऐप इंस्टॉल न करें। पहले SEBI Check पर जाँच करें।':lv=='Medium'?'कुछ संकेत सावधानी माँगते हैं। कार्रवाई से पहले भेजने वाले की पहचान जाँचें।':'इस पाठ में कोई मज़बूत धोखाधड़ी संकेत नहीं मिला। फिर भी आधिकारिक वेबसाइट खुद खोलकर देखें।';
+ return{risk:lv,flags:R.flags.map(f=>f.name),explanation:hi?h:en,matches:R.flags.map(f=>f.why).concat(R.ok),cannot_verify:['Whether the sender is truly registered (check SEBI directory)','Whether any returns claimed are real','Who owns the account or UPI ID mentioned'],actions:['Verify payment details on SEBI Check','Do not pay or install apps','If money moved: call 1930, then report at cybercrime.gov.in','Broker/MF complaints: SEBI SCORES']}}
+
+let last=null;
+async function analyze(){const t=getText(),claim=$('#claim').value;if(!t.trim()){$('#res').innerHTML='<p class="text-sm text-rose-700">Add some text first, or pick a sample.</p>';return}
+ const R=rules(t,claim),M=mask(t);$('#res').innerHTML='<div class="py-16 text-center text-slate-500 text-sm">Analyzing <span class="dots"><span></span><span></span><span></span></span></div>';
+ let out;try{if(getKey()){const raw=await gem({systemInstruction:{parts:[{text:SYS+(lang=='hi'?'Hindi.':'simple English.')}]},contents:[{role:'user',parts:[{text:'Analyze this masked message. Local rule hints: '+R.flags.map(f=>f.name).join('; ')+'\n\nMESSAGE:\n'+M.text}]}],generationConfig:{responseMimeType:'application/json'}});out=JSON.parse(raw.replace(/```json|```/g,'').trim())}}catch(e){out=null;var err=e.message}
+ if(!out)out=mockRes(R,M);
+ last={R,M,out,err,live:!!getKey()&&!err};render(last)}
+function getText(){const a=$('.tab[aria-selected=true]').dataset.t;if(a=='text')return $('#msg').value;if(a=='ocr')return $('#ocrOut').value;if(a=='voice')return $('#vOut').value;return ($('#claim').value+' pay to '+$('#upi').value).trim()==' pay to'?'':($('#claim').value+'. Please pay to '+$('#upi').value)}
+function render(d){const lv=(d.out.risk||d.R.lvl),cls=lv=='High'?'r-h':lv=='Medium'?'r-m':'r-l',pos=lv=='High'?88:lv=='Medium'?50:12;
+ const li=a=>(a||[]).map(x=>`<li>${esc(x)}</li>`).join('');
+ $('#res').innerHTML=`<div class="flex items-center justify-between"><h3 class="font-bold text-lg">Risk read-out</h3><span class="chip ${cls}">${esc(lv)} risk</span></div>
+ <div class="relative mt-4 h-3 rounded-full overflow-hidden flex" aria-hidden="true"><div class="flex-1 bg-emerald-500"></div><div class="flex-1 bg-amber-500"></div><div class="flex-1 bg-rose-600"></div></div>
+ <div class="relative h-3"><div class="absolute -top-1 w-0 h-0 border-x-[7px] border-x-transparent border-b-[9px] border-b-slate-900" style="left:calc(${pos}% - 7px)"></div></div>
+ <p class="text-xs text-slate-500 mt-1">Rule score ${d.R.score}/100 · This is a risk signal, not a verdict.</p>
+ <h4 class="font-semibold mt-4 text-sm">Red flags</h4><ul class="list-disc ml-5 text-sm text-slate-700">${li(d.out.flags)||'<li>None detected</li>'}</ul>
+ <h4 class="font-semibold mt-4 text-sm">PII masking audit</h4><p class="text-sm text-slate-700">Masked before any transmission: ${d.M.audit.phone} phone, ${d.M.audit.upi} UPI, ${d.M.audit.acct} account, ${d.M.audit.name} name.</p><pre class="mt-1 text-xs bg-slate-100 rounded-lg p-2 whitespace-pre-wrap">${esc(d.M.text.slice(0,400))}</pre>
+ <h4 class="font-semibold mt-4 text-sm">Explanation</h4><p class="text-sm text-slate-800" id="ex">${esc(d.out.explanation)}</p>
+ <div class="grid sm:grid-cols-2 gap-3 mt-3 text-sm"><div class="rounded-lg bg-amber-50 p-3"><b>What matches fraud patterns</b><ul class="list-disc ml-5 mt-1">${li(d.out.matches)||'<li>Nothing notable</li>'}</ul></div><div class="rounded-lg bg-slate-100 p-3"><b>What cannot be verified</b><ul class="list-disc ml-5 mt-1">${li(d.out.cannot_verify)}</ul></div></div>
+ <h4 class="font-semibold mt-4 text-sm">What to do</h4><ul class="list-disc ml-5 text-sm text-slate-700">${li(d.out.actions)}</ul>
+ <div class="mt-4 flex flex-wrap gap-2"><a class="btn btn-p text-sm" target="_blank" rel="noopener" href="https://siportal.sebi.gov.in/intermediary/sebi-check">Verify on SEBI Check</a><a class="btn btn-o text-sm" href="tel:1930">Call 1930</a><a class="btn btn-o text-sm" target="_blank" rel="noopener" href="https://scores.sebi.gov.in">SCORES</a><button class="btn btn-o text-sm" onclick="speak()"><i data-lucide="volume-2" class="w-4 h-4"></i>Listen aloud</button></div>
+ ${d.err?`<p class="text-xs text-amber-700 mt-3">Live Gemini failed (${esc(d.err)}); showing simulated analysis.</p>`:''}`;ic()}
+function speak(){if(!('speechSynthesis' in window))return alert('Speech not supported in this browser');speechSynthesis.cancel();const u=new SpeechSynthesisUtterance($('#ex').textContent);u.lang=lang=='hi'?'hi-IN':'en-IN';speechSynthesis.speak(u)}
+
+// ---- tabs, presets, ocr, voice
+$$('.tab').forEach(b=>b.onclick=()=>{$$('.tab').forEach(x=>x.setAttribute('aria-selected',x===b));$$('.pane').forEach(p=>p.classList.add('hidden'));$('#p-'+b.dataset.t).classList.remove('hidden')});
+const PRE=["URGENT! Join our VIP Telegram group for sure shot stock tips. Guaranteed 5% daily returns, only 20 seats left today. Download the app: http://tradepro-vip.example/app.apk and pay joining fee to rahul.tips@okaxis",
+"Namaste, I am SEBI registered analyst Mr Rakesh Sharma. Pay advisory fee Rs 5000 to my personal number 9876543210 on PhonePe (rakesh9876@ybl) and get today's intraday calls.",
+"Investor Education: Read how to verify registered intermediaries and avoid unsolicited tips. https://investor.sebi.gov.in/ (official SEBI investor awareness website)"];
+$$('[data-p]').forEach(b=>b.onclick=()=>{const t=PRE[b.dataset.p];$('.tab[data-t=text]').click();$('#msg').value=t;analyze()});
+$('#img').onchange=()=>{$('#ocrOut').value='Scanning…';setTimeout(()=>{$('#ocrOut').value=PRE[0];},900)};
+$('#mic').onclick=()=>{const SR=window.SpeechRecognition||window.webkitSpeechRecognition;const o=$('#vOut');
+ if(!SR){$('#micT').textContent='Listening (simulated)…';return setTimeout(()=>{o.value='Ek Telegram group keh raha hai roz 5% return guaranteed hai, kya ye sahi hai?';$('#micT').textContent='Tap and speak'},1200)}
+ const r=new SR();r.lang=lang=='hi'?'hi-IN':'en-IN';$('#micT').textContent='Listening…';r.onresult=e=>{o.value=e.results[0][0].transcript};r.onend=()=>{$('#micT').textContent='Tap and speak'};r.onerror=()=>{$('#micT').textContent='Tap and speak'};r.start()};
+$('#go').onclick=analyze;
+
+// ---- flowchart
+const NODES=[['mic','User input','Text, screenshot, UPI ID or voice. Screenshots go through OCR and voice through speech-to-text (Bhashini or Sarvam in production).'],['eye-off','Client-side PII masking','Regex masks phone numbers, account numbers, UPI IDs and titled names in your browser, before anything is sent. Nothing is stored by default.'],['list-checks','Rules engine','Fast, explainable regex rules flag daily-return promises, VIP groups, APK links, urgency and personal UPI IDs. It runs offline, so the core check works on weak networks.'],['sparkles','Gemini explainer','The LLM only explains in plain language and states what can and cannot be verified. It never gives stock tips and never makes the final call.'],['badge-check','Official verification loop','You confirm on SEBI Check or the SEBI directory. If money moved, call 1930, report on cybercrime.gov.in, or file on SCORES.']];
+$('#nodes').innerHTML=NODES.map((n,i)=>`<button class="node card p-4 flex-1 text-left" aria-pressed="false" data-n="${i}"><i data-lucide="${n[0]}" class="w-5 h-5 text-[#1E40AF]"></i><div class="font-semibold mt-2">${n[1]}</div></button>${i<4?'<div class="self-center text-slate-400 rotate-90 lg:rotate-0" aria-hidden="true">➔</div>':''}`).join('');
+$$('.node').forEach(b=>b.onclick=()=>{$$('.node').forEach(x=>x.setAttribute('aria-pressed',x===b));const n=NODES[b.dataset.n];$('#drawer').innerHTML=`<b>${n[1]}</b><p class="mt-1">${n[2]}</p>`});
+
+// ---- game
+const SC=[{t:"“Join our Telegram SME stock group. Admin buys first, you buy after the alert. Profit in 3 days!”",o:['Group is on Telegram','Insiders buy first, followers buy after (pump pattern)','Message uses emojis'],a:1,w:"This is a pump-and-dump pattern. Herd behaviour makes followers feel safe when they are being used as exit liquidity."},
+{t:"“Invest Rs 10,000 today for assured monthly income. Pay to this PhonePe number of our manager.”",o:['Asks to pay a personal number','Mentions monthly income','Message is short'],a:0,w:"Registered intermediaries collect money on @valid UPI IDs you can check on SEBI Check, never on someone's personal number."},
+{t:"“Install our trading APK from this link to get free premium signals. Limited seats left!”",o:['It says free','APK outside official stores plus urgency','It mentions signals'],a:1,w:"Unofficial APKs can steal data and money. Urgency (scarcity bias) is built to stop you from verifying first."}];
+let gt=null,gs=0,ga=0;
+function drawG(){$('#gb').innerHTML=SC.map((s,i)=>`<div class="card p-4"><p class="text-sm">${s.t}</p><div class="mt-3 space-y-2" data-q="${i}">${s.o.map((o,j)=>`<button class="btn btn-o w-full text-left text-sm justify-start" data-j="${j}">${o}</button>`).join('')}</div><p class="text-sm mt-3 hidden"></p></div>`).join('');
+ $$('[data-q] button').forEach(b=>b.onclick=()=>{if(!gt)return;const q=+b.parentElement.dataset.q,s=SC[q],ok=+b.dataset.j==s.a;if(ok)gs++;ga++;
+ [...b.parentElement.children].forEach(x=>{x.disabled=true;if(+x.dataset.j==s.a)x.classList.add('bg-emerald-100')});if(!ok)b.classList.add('bg-rose-100');
+ const p=b.parentElement.nextElementSibling;p.className='text-sm mt-3 '+(ok?'text-emerald-800':'text-rose-800');p.textContent=(ok?'Correct. ':'Not quite. ')+s.w;$('#sc').textContent=`Score ${gs}/3`;if(ga==3)endG()})}
+function endG(){clearInterval(gt);gt=null;$('#gs').textContent='Play again';$('#tm').textContent=gs==3?'Sharp eyes!':'Done'}
+$('#gs').onclick=()=>{gs=0;ga=0;let t=60;$('#sc').textContent='Score 0/3';drawG();$('#tm').textContent=t+'s';$('#gs').textContent='Restart';clearInterval(gt);gt=setInterval(()=>{t--;$('#tm').textContent=t+'s';if(t<=0)endG()},1000)};
+drawG();
+
+// ---- assistant
+const L=$('#log');const add=(m,me)=>{L.insertAdjacentHTML('beforeend',`<div class="${me?'ml-8 bg-[#1E40AF] text-white':'mr-8 bg-white border border-slate-200'} rounded-xl px-3 py-2">${esc(m)}</div>`);L.scrollTop=L.scrollHeight};
+function tc(){const c=$('#chat');const o=c.style.display=='flex';c.style.display=o?'none':'flex';if(!o&&!L.children.length)add('I explain scams, red flags and how to verify. I will not recommend stocks, predict prices or give trading tips.')}
+$('#fab').onclick=tc;
+const BLOCK=/(which|what)\s+(stock|share|coin)|should i (buy|sell|invest)|\b(buy|sell)\b.*\b(stock|share|nifty|crypto)|price (target|predict)|will .*(go up|rise|crash|double)|multibagger|trading tip|intraday call|best (stock|share)/i;
+const KB=[[/sebi check|valid/i,'SEBI Check lets you verify a registered intermediary’s bank account or UPI ID. Registered intermediaries use IDs ending in @valid. Use it before paying.'],[/1930|cyber|report|paid|lost/i,'If money moved, call 1930 quickly, then report at cybercrime.gov.in. For broker or mutual fund complaints, use SEBI SCORES.'],[/telegram|whatsapp|group|vip/i,'Closed tip groups are a common channel for manipulation. Be careful with urgency, “VIP” access and promised returns, and ask for the sender’s SEBI registration number.'],[/upi|personal|number/i,'A registered intermediary should not ask you to pay a personal number. Check any UPI ID or account on SEBI Check first.'],[/guarantee|daily|return/i,'No genuine investment can guarantee returns, least of all daily returns. SEBI-registered advisers are not allowed to promise them.'],[/apk|app/i,'Install apps only from official stores. Trading apps should also be verifiable through your registered broker.']];
+$('#cf').onsubmit=async e=>{e.preventDefault();const q=$('#ci').value.trim();if(!q)return;$('#ci').value='';add(q,true);
+ if(BLOCK.test(q))return add('I can’t recommend stocks, predict prices or give trading tips. I can help you check whether a message or person is legitimate. Try SEBI Check or ask about a specific red flag.');
+ if(getKey()){try{const m=mask(q).text;const r=await gem({systemInstruction:{parts:[{text:SYS.split(' Respond ONLY')[0]+' In chat mode, answer briefly in plain text, in the language of the question.'}]},contents:[{role:'user',parts:[{text:m}]}]});return add(r)}catch(x){add('Live Gemini failed ('+x.message+'). Using the built-in answers.')}}
+ const k=KB.find(x=>x[0].test(q));add(k?k[1]:'Check the sender on the SEBI intermediary directory, never pay a personal account, and be wary of guaranteed returns or urgency. Paste the message into the studio for a detailed read-out.')};
+ic();window.addEventListener('load',ic);
+</script>
+</body>
+</html>
